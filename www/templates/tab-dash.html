@@ -1,70 +1,51 @@
 <ion-view view-title="Nearby Events">
   <ion-content>
-    <div class="list card">
-      <div class="item item-avatar">
-        <img src="img/mike.png">
-        <h2>Marty McFly</h2>
-        <p>23 min ago</p>
-      </div>
+  
+      <ion-refresher on-refresh="doRefresh()">
+                     
+      </ion-refresher>
+      <ion-list>
+        <!--<ion-item ng-repeat="item in items">Item {{ item.id }}</ion-item>-->
+        <div class="list card" ng-repeat="item in items">
+          <div class="item item-avatar">
+            <img src="img/mike.png">
+            <h2>Marty McFly</h2>
+            <p><span am-time-ago="item.time | amParse:'YYYY.MM.DD HH:mm:ss'"></span></p>
+          </div>
+        
+          <div class="item item-body">
+            <!--<img class="full-image" src="img/delorean.jpg">-->
+            <div class="item-calendar">
+                <h1 class="text-center positive">
+                    <span class="item-day">
+                    	<time>{{ item.meeting | amDateFormat: 'h:mm' }}</time>
+                        <small class=""><time>{{ item.meeting | amDateFormat: 'a' }}</time></small>
+                    </span><br />
+                    <small class="stable"><span am-time-ago="item.meeting | amParse:'YYYY.MM.DD HH:mm:ss'"></span></small>
+                </h1>
+            </div>
+            <p>
+              Item {{ item.id }}
+            </p>
+            <p>
+              <a href="#" class="subdued"><i class="icon ion-ios-location"></i> Melbourne, Australia</a>
+              <a href="#" class="subdued"><i class="icon ion-person"></i> 4 Going</a>
+            </p>
+       
+          </div>
+          <div class="padding-left padding-right">
+            <a class="button button-positive button-small button-block">Going</a>
+
+          </div>
+
+        </div>
     
-      <div class="item item-body">
-        <img class="full-image" src="img/delorean.jpg">
-        <p>
-          Let's go to a bar for drinks at 9:00pm
-        </p>
-        <p>
-          <a href="#" class="subdued"><i class="icon ion-ios-location"></i> Melbourne, Australia</a>
-          <a href="#" class="subdued"><i class="icon ion-person"></i> 4 Going</a>
-        </p>
-      </div>
-      <div class="button-bar">
-          <a class="button button-positive disabled">Going</a>
-      </div>    
-    </div>
     
-    <div class="list card">
-      <div class="item item-avatar">
-        <img src="img/mike.png">
-        <h2>George Gy</h2>
-        <p>27 min ago</p>
-      </div>
-    
-      <div class="item item-body">
-        <img class="full-image" src="img/delorean.jpg">
-        <p>
-          Let's go to a bar for drinks at 9:00pm
-        </p>
-        <p>
-          <a href="#" class="subdued"><i class="icon ion-ios-location"></i> Melbourne, Australia</a>
-          <a href="#" class="subdued"> - 4 are going</a>
-        </p>
-      </div>
-      <div class="button-bar">
-          <a class="button button-positive">Go!</a>
-      </div>    
-    </div>
-    
-    <div class="list card">
-      <div class="item item-avatar">
-        <img src="img/mike.png">
-        <h2>McDonalds</h2>
-        <p>2 hr ago</p>
-      </div>
-    
-      <div class="item item-body">
-        <img class="full-image" src="img/delorean.jpg">
-        <p>
-          Let's go to a bar for drinks at 9:00pm
-        </p>
-        <p>
-          <a href="#" class="subdued"><i class="icon ion-ios-location"></i> Melbourne, Australia</a>
-          <a href="#" class="subdued"> - 4 are going</a>
-        </p>
-      </div>
-      <div class="button-bar">
-          <a class="button button-positive">Go!</a>
-      </div>    
-    </div>
+      </ion-list>  
+  
+
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>      
+  
     
     
   </ion-content>

@@ -1,1 +1,17 @@
 /* Empty. Add your own CSS if you like */
+.item-day{
+	font-size: 200%;
+	margin-bottom: 0px;
+}
+
+.item-calendar{
+	background: #ccc url('../img/bg.jpg') top center no-repeat;
+	background-size: cover;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	
+}
+
+.item-calendar h1{
+	line-height: 100%;
+}

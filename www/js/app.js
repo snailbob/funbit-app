@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 'starter.services', 'angularMoment'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -31,7 +31,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
   // Each state's controller can be found in controllers.js
   $stateProvider
    .state('signin', {
-      url: '/sign-in',
+      url: '/signin',
       templateUrl: 'templates/sign-in.html',
       controller: 'SignInCtrl'
     })
@@ -90,6 +90,6 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/sign-in');
+  $urlRouterProvider.otherwise('/signin');
 
 });
